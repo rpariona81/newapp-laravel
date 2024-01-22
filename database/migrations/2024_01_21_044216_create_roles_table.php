@@ -17,8 +17,9 @@ class CreateRolesTable extends Migration
         Schema::create('t_roles', function (Blueprint $table) {
             $table->bigIncrements('id'); // role id
             $table->string('rolename');       // For MySQL 8.0 use string('name', 125);
-            $table->string('description');       // Optional
-            $table->string('guard_name'); // For MySQL 8.0 use string('guard_name', 125);
+            $table->string('description')->nullable();       // Optional
+            $table->string('guard_name')->nullable(); // For MySQL 8.0 use string('guard_name', 125);
+            $table->boolean('status')->default(1);
             $table->timestamps();
         });
     }
